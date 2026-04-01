@@ -85,6 +85,7 @@ if st.button("🚀 Iniciar Monitoreo"):
             **a,
             "activo": True,
             "ultimo_precio": None
+            "alerta_compra": False  
         })
 
     st.session_state.monitoreo = True
@@ -150,9 +151,13 @@ if st.session_state.monitoreo:
         margen = activo["compra"] * 0.001
 
         # 1. BREAKEVEN (precio compra)
-        if abs(precio - activo["compra"]) <= margen:
+        if (
+            abs(precio - activo["compra"]) <= margen
+            and not activo["alerta_compra"]
+        ):
             estado = "⚠️ COMPRA"
             reproducir_sonido("compra")
+            activo["alerta_compra"] = True
 
         # 2. TARGET
         elif precio >= activo["target"]:
