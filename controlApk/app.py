@@ -84,7 +84,7 @@ if st.button("🚀 Iniciar Monitoreo"):
         st.session_state.activos.append({
             **a,
             "activo": True,
-            "ultimo_precio": None
+            "ultimo_precio": None,
             "alerta_compra": False  
         })
 
