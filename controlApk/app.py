@@ -26,11 +26,19 @@ def reproducir_sonido(tipo):
         ruta = os.path.join(base_dir, "static", archivo)
 
         with open(ruta, "rb") as f:
-            audio_bytes = f.read()
-            st.audio(audio_bytes, format="audio/wav", autoplay=True)
+            data = f.read()
+            b64 = base64.b64encode(data).decode()
 
-    except Exception as e:
-        st.error(f"Error sonido: {e}")
+        audio_html = f"""
+        <audio autoplay style="display:none;">
+            <source src="data:audio/wav;base64,{b64}" type="audio/wav">
+        </audio>
+        """
+
+        st.markdown(audio_html, unsafe_allow_html=True)
+
+    except:
+        pass
         
         
 st.set_page_config(page_title="Monitor Trading", layout="centered")
