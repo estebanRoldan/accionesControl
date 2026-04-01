@@ -16,9 +16,9 @@ st.markdown(
 
 def reproducir_sonido(tipo):
     archivo = {
-        "compra": "target_s.wav",
-        "target": "target_s.wav",
-        "stop": "stop_s.wav"
+        "compra": "target_s.mp3",
+        "target": "target_s.mp3",
+        "stop": "stop_s.mp3"
     }.get(tipo, "alert.wav")
 
     try:
