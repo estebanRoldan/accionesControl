@@ -11,6 +11,8 @@ st.markdown(
     unsafe_allow_html=True
 )
 
+import os
+
 def reproducir_sonido(tipo):
     archivo = {
         "compra": "target_s.wav",
@@ -19,11 +21,15 @@ def reproducir_sonido(tipo):
     }.get(tipo, "alert.wav")
 
     try:
-        with open(f"static/{archivo}", "rb") as f:
+        base_dir = os.path.dirname(__file__)
+        ruta = os.path.join(base_dir, "static", archivo)
+
+        with open(ruta, "rb") as f:
             audio_bytes = f.read()
             st.audio(audio_bytes, format="audio/wav", autoplay=True)
+
     except Exception as e:
-        st.warning(f"No se pudo reproducir sonido: {archivo}")
+        st.error(f"Error sonido: {e}")
         
         
 st.set_page_config(page_title="Monitor Trading", layout="centered")
