@@ -2,6 +2,7 @@ import streamlit as st
 import yfinance as yf
 import time
 import base64
+import os
 
 st.markdown(
     """
@@ -11,7 +12,7 @@ st.markdown(
     unsafe_allow_html=True
 )
 
-import os
+
 
 def reproducir_sonido(tipo):
     archivo = {
