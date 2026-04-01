@@ -16,28 +16,14 @@ def reproducir_sonido(tipo):
         "compra": "target_s.wav",
         "target": "target_s.wav",
         "stop": "stop_s.wav"
-    }.get(tipo, "alert.wav")  # fallback
+    }.get(tipo, "alert.wav")
 
     try:
-        with open(archivo, "rb") as f:
-            # data = f.read()
-            # b64 = base64.b64encode(data).decode()
-
-            # audio_html = f"""
-            # <audio autoplay>
-            # <source src="data:audio/wav;base64,{b64}" type="audio/wav">
-            # </audio>
-            # """
-             
-            audio_html = f"""
-            <audio autoplay>
-                <source src="/static/{archivo}" type="audio/wav">
-            </audio>
-            """
-    
-            st.markdown(audio_html, unsafe_allow_html=True)
-    except:
-        pass
+        with open(f"static/{archivo}", "rb") as f:
+            audio_bytes = f.read()
+            st.audio(audio_bytes, format="audio/wav", autoplay=True)
+    except Exception as e:
+        st.warning(f"No se pudo reproducir sonido: {archivo}")
         
         
 st.set_page_config(page_title="Monitor Trading", layout="centered")
