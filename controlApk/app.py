@@ -63,11 +63,11 @@ for i in range(3):
     with col1:
         simbolo = st.text_input(f"Símbolo {i+1}", key=f"simbolo_{i}", value="YPFD.BA")
     with col2:
-        compra = st.number_input(f"Compra {i+1}", key=f"compra_{i}", value=60000.0)
+        compra = st.number_input(f"Compra {i+1}", key=f"compra_{i}", value=1.0)
     with col3:
-        target = st.number_input(f"Target {i+1}", key=f"target_{i}", value=70000.0)
+        target = st.number_input(f"Target {i+1}", key=f"target_{i}", value=1.0)
     with col4:
-        stop = st.number_input(f"Stop {i+1}", key=f"stop_{i}", value=55000.0)
+        stop = st.number_input(f"Stop {i+1}", key=f"stop_{i}", value=1.0)
 
     activos_input.append({
         "simbolo": simbolo,
